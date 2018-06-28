@@ -33,13 +33,13 @@ node server.js
 
 # Built with 
 
--Node
--Bootstrap v4.1
--Handlebars
--MongoDB
--Cheerio
--Mongoose
--Express
+- Node
+- Bootstrap v4.1
+- Handlebars
+- MongoDB
+- Cheerio
+- Mongoose
+- Express
 
 
 
