@@ -18,14 +18,14 @@
   </thead>
   <tbody>
     {{!-- Our Handlebars code goes here! --}} {{#each Articles}}
-    <tr>
+    <tr data-id="{{this._id}}">
       <td>{{Title}}</td>
       <td>
         <a href="{{URL}}">{{URL}}</a>
       </td>
       <td>{{Notes}}</td>
       <td>{{Date}}</td>
-      <td><span class="delete glyphicon glyphicon-remove" data-id="{{this._id}}"></span></td>
+      <td><button class="delete glyphicon glyphicon-remove delete-article"></button></td>
     </tr>
     {{/each}} {{!--
     <td>

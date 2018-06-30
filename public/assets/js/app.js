@@ -35,11 +35,11 @@ $(".save-button").on('click', function () {
 $(".delete-article").on("click", function () {
   var thisId = $(this).attr("data-id");
   $.ajax({
-    method: "POST",
-    URL: "article/delete/" + thisId
+    method: "DELETE",
+    URL: "article/" + thisId
   }).done(function (data) {
     window.location.reload()
-    window.location = "/saved"
+    // window.location = "/saved"
   })
 });
 

@@ -64,7 +64,8 @@ if(process.env.MONGODB_URI) {
 // })
 
 app.get('/', function(req, res){
-  res.send('Yep this works!');
+  // res.send('Yep this works!');
+  res.redirect('/article');
 });
 
 app.get("/all", function(req, res) {
