@@ -45,12 +45,15 @@ mongoose.Promise = Promise;
 
 // if you ar only useing one database, use  the mongoose.connect 
 var databaseUri = mongoose.connect("mongodb://localhost/newsScrape");
+
 var PORT = process.env.PORT || 3000;
 
 if(process.env.MONGODB_URI) {
 
   mongoose.connect(process.env.MONGODB_URI);
-}else {
+  
+} else {
+
   mongoose.connect(databaseUri);
 }
 
@@ -143,8 +146,8 @@ app.get("/article", function(req, res) {
     // If an error occurred, send it to the client
     res.json(err);
   });
-  
 });
+  
 
 app.delete("/article/:id", function(req, res) {
   // this route should delete a contact from the table, if the id matches the ':id' url param
