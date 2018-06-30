@@ -5,7 +5,7 @@ This app uses webscraping to grab article headings, summaries, and urls directly
 # Getting started
  These instructions will get you a copy of the porject up and running on you local machine for development.
 
- # Rerequisites
+ # Prerequisites
 
  - Node
  - MongoDB
