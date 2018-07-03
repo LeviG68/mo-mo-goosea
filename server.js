@@ -19,6 +19,8 @@ var axios = require("axios");
 // Initialize Express, 
 var app = express();
 
+// var dotnev = require('dotenv').config()
+
 var Article = require("./models/articles");
 var Note = require("./models/note");
 
@@ -44,17 +46,24 @@ app.set("view engine", "handlebars");
 mongoose.Promise = Promise;
 
 // if you ar only useing one database, use  the mongoose.connect 
-var databaseUri = mongoose.connect("mongodb://localhost/newsScrape");
+var databaseUri = "mongodb://localhost/newsScrape";
 
 var PORT = process.env.PORT || 3000;
 
 if(process.env.MONGODB_URI) {
 
-  mongoose.connect(process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds123171.mlab.com:23171/heroku_hw399lx3");
+  mongoose.connect(process.env.MONGODB_URI || "mongodb://LeviG68:Football68!@ds123171.mlab.com:23171/heroku_hw399lx3");
   
 } else {
 
-  mongoose.connect(databaseUri);
+  mongoose.connect(databaseUri)
+    .then(function(connection){
+      console.log('Mongo connect success')
+    })
+    .catch(function(error){
+      console.log('Mongo connect Error');
+      console.log(error.message);
+    })
 }
 
 // Database configuration
@@ -152,7 +161,7 @@ app.get("/article", function(req, res) {
 app.delete("/article/:id", function(req, res) {
   // this route should delete a contact from the table, if the id matches the ':id' url param
   db.Articles.delete({"_id": req.params.id})
-  exec(function (err, doc) {
+  .then(function (err, doc) {
     if (err) {
       console.log(err);
     } else {
