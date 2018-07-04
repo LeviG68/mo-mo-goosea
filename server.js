@@ -158,16 +158,29 @@ app.get("/article", function(req, res) {
 });
   
 
-app.delete("/article/:id", function(req, res) {
+app.delete("/delete/:id", function(req, res) {
   // this route should delete a contact from the table, if the id matches the ':id' url param
-  db.Articles.delete({"_id": req.params.id})
-  .then(function (err, doc) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(doc);
+  db.Articles.deleteOne({"_id": req.params.id}, function(error, removed) {
+    
+    if(error) {
+
+      res.send(error);
     }
-  });
+    else {
+
+      Article.findOne({}, (error, found => {
+
+      }));
+      res.send(removed);
+      }
+    })
+  // .then(function (err, doc) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.send();
+  //   }
+  // });
 });
 
 app.listen(PORT, function() {

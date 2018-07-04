@@ -33,11 +33,13 @@ $(".save-button").on('click', function () {
 // delete article from saved
 
 $(".delete-article").on("click", function () {
+  console.log($(this).attr("data-id"));
   var thisId = $(this).attr("data-id");
+  console.log(thisId);
   $.ajax({
     method: "DELETE",
-    URL: "article/" + thisId
-  }).done(function (data) {
+    url: "/delete/" + thisId
+  }).then(function (data) {
     window.location.reload()
     // window.location = "/saved"
   })
@@ -47,7 +49,7 @@ $(".delete-article").on("click", function () {
 $(".ave-note").on("click", function () {
   var thisId = $(this).attr("data-id");
   if ($("#note-content" + thisId).val()=="") {
-    alert("Note can't be blank!");
+    alert("Note can't be blank!");s
   }else {
     $.ajax({
       method: "POST",
