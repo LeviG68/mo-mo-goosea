@@ -52,7 +52,7 @@ var PORT = process.env.PORT || 3000;
 
 if(process.env.MONGODB_URI) {
 
-  mongoose.connect(process.env.MONGODB_URI || "mongodb://LeviG68:Football68!@ds123171.mlab.com:23171/heroku_hw399lx3");
+  mongoose.connect(process.env.MONGODB_URI);
   
 } else {
 
